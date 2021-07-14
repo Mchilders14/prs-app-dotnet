@@ -110,6 +110,7 @@ namespace prs_app_dotnet.Controllers
         }
 
         // Post: api/users/login
+        // Unlike java, user must have null class attributes in json body.
         [HttpPost("{login}")]
         public async Task<ActionResult<User>> LoginUser(User user)
         {
