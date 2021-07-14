@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{FEEACE26-9028-4F06-922B-4894E66F546B}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="prs-app-dotnet/Controllers/UsersController.cs">
+    <Files>
+      <File FileName="prs-app-dotnet/Controllers/UsersController.cs" Line="105" Column="59" />
+      <File FileName="prs-app-dotnet/Program.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PRS" expanded="True">
+            <Node name="prs-app-dotnet" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="UsersController.cs" selected="True" />
+              </Node>
+              <Node name="Data" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.prs-app-dotnet PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
