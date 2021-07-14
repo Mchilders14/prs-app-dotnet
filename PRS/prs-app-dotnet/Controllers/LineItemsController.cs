@@ -68,6 +68,7 @@ namespace prs_app_dotnet.Controllers
                     throw;
                 }
             }
+            await RecalculateTotal(id);
 
             return NoContent();
         }
@@ -79,6 +80,8 @@ namespace prs_app_dotnet.Controllers
         {
             _context.LineItems.Add(lineItem);
             await _context.SaveChangesAsync();
+
+            await RecalculateTotal(lineItem.RequestId); // Update the Request Total
 
             return CreatedAtAction("GetLineItem", new { id = lineItem.Id }, lineItem);
         }
@@ -102,6 +105,23 @@ namespace prs_app_dotnet.Controllers
         private bool LineItemExists(int id)
         {
             return _context.LineItems.Any(e => e.Id == id);
+        }
+
+        // Recalculation for the total in Class Requests
+        public async Task RecalculateTotal(int requestId)
+        {
+            var request = await _context.Requests.FindAsync(requestId);
+
+            request.Total = (from l in _context.LineItems
+                             join p in _context.Products
+                             on l.ProductId equals p.Id
+                             where l.RequestId == requestId
+                             select new { Total = l.Quantity * p.Price }).Sum(i => i.Total);
+
+            var rowsChanged = await _context.SaveChangesAsync();
+
+            if (rowsChanged != 1)
+                throw new Exception("Fatal Error: Did not calculate.");
         }
     }
 }

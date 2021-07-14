@@ -20,6 +20,10 @@ namespace prs_app_dotnet.Controllers
             _context = context;
         }
 
+        /*
+         *  HTTP GET -->
+         */
+
         // GET: api/Requests
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Request>>> GetRequests()
@@ -41,7 +45,53 @@ namespace prs_app_dotnet.Controllers
             return request;
         }
 
-        // PUT: api/Requests/5
+        /*
+         *  HTTP PUT -->
+         */
+
+        // Put: api/Users/Approve/2 | APPROVE STATUS
+        [HttpPut("approve/{id}")]
+        public async Task<IActionResult> ApproveRequest(int id, Request request)
+        {
+            request.Status = "Approved";
+            return await PutRequest(id, request);
+        }
+
+        // Put: api/Users/Reject/2 | REJECT STATUS
+        [HttpPut("reject/{id}")]
+        public async Task<IActionResult> RejectRequest(int id, Request request)
+        {
+            request.Status = "Rejected";
+            return await PutRequest(id, request);
+        }
+
+        //Put: api/Users/Review | REVIEW STATUS
+        [HttpPut("review")] // <- references url && {} <- references parameter
+        public async Task<IActionResult> SubmitReview(Request request)
+        {
+            _context.Entry(request).State = EntityState.Modified;
+
+            request.SubmittedDate = DateTime.Now;
+            request.Status = (request.Total <= 50) ? "Approve" : "Review";
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        //Put: api/Requests <- ID NOT REQUIRED IN SEARCH BAR | UPDATE
+        [HttpPut]
+        public async Task<IActionResult> PutUser(Request request)
+        {
+
+            _context.Entry(request).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // PUT: api/Requests/5 <- ID REQUIRED IN SEARCH BAR | UPDATE
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRequest(int id, Request request)
@@ -72,6 +122,10 @@ namespace prs_app_dotnet.Controllers
             return NoContent();
         }
 
+        /*
+         *  HTTP POST -->
+         */
+
         // POST: api/Requests
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -82,6 +136,10 @@ namespace prs_app_dotnet.Controllers
 
             return CreatedAtAction("GetRequest", new { id = request.Id }, request);
         }
+
+        /*
+         *  HTTP DELETE -->
+         */
 
         // DELETE: api/Requests/5
         [HttpDelete("{id}")]

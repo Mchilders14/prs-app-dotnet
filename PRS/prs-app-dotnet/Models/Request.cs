@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,7 +8,7 @@ namespace prs_app_dotnet.Models
     public class Request
     {
         public int Id { get; set; }
-        public DateTime DataNeeded { get; set; }
+        public DateTime DateNeeded { get; set; }
         public DateTime SubmittedDate { get; set; } = DateTime.Now;
 
         [Column(TypeName = "decimal(11,2)")]
@@ -30,6 +31,9 @@ namespace prs_app_dotnet.Models
 
         public int UserId { get; set; }
         public virtual User User { get; set; }
+
+        public virtual IEnumerable<LineItem> LineItems { get; set; }
+
     }
 
 }

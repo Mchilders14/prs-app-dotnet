@@ -1,5 +1,6 @@
 /Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/bin/Debug/net5.0/appsettings.Development.json
 /Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/bin/Debug/net5.0/appsettings.json
+/Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/bin/Debug/net5.0/mono_crash.11a67480d0.0.json
 /Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/bin/Debug/net5.0/prs-app-dotnet.deps.json
 /Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/bin/Debug/net5.0/prs-app-dotnet.runtimeconfig.json
 /Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/bin/Debug/net5.0/prs-app-dotnet.runtimeconfig.dev.json
@@ -147,3 +148,7 @@
 /Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/obj/Debug/net5.0/ref/prs-app-dotnet.dll
 /Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/obj/Debug/net5.0/prs-app-dotnet.pdb
 /Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/obj/Debug/net5.0/prs-app-dotnet.genruntimeconfig.cache
+/Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/bin/Debug/net5.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/bin/Debug/net5.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/bin/Debug/net5.0/Newtonsoft.Json.Bson.dll
+/Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/obj/Debug/net5.0/prs-app-dotnet.csproj.AssemblyReference.cache
