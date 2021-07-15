@@ -20,12 +20,11 @@ namespace prs_app_dotnet.Controllers
             _context = context;
         }
 
-        // GET: api/Users/username/password
+        // GET: api/Users/username/password | LOGIN USER
         [HttpGet("{username}/{password}")]
         public async Task<ActionResult<User>> LoginUser(string username, string password)
         {
-            var user = await _context.Users
-                                        .SingleOrDefaultAsync(x => x.Username.ToLower().Equals(username.ToLower())
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.Username.ToLower().Equals(username.ToLower())
                                                                     && x.Password.Equals(password));
             if (user == null)
             {
@@ -34,14 +33,14 @@ namespace prs_app_dotnet.Controllers
             return user;
         }
 
-        // GET: api/Users
+        // GET: api/Users | GET ALL USERS
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
             return await _context.Users.ToListAsync();
         }
 
-        // GET: api/Users/5
+        // GET: api/Users/5 | GET USER BY ID
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -55,7 +54,7 @@ namespace prs_app_dotnet.Controllers
             return user;
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Users/5 | UPDATE USER
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
@@ -86,7 +85,7 @@ namespace prs_app_dotnet.Controllers
             return NoContent();
         }
 
-        //Put: api/Users <- Id not required in searchbar
+        //Put: api/Users <- Id not required in searchbar | UPDATE USER WITHOUT ID IN HTML SEARCH
         [HttpPut]
         public async Task<IActionResult> PutUser(User user)
         {
@@ -98,7 +97,7 @@ namespace prs_app_dotnet.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
+        // POST: api/Users | ADD USER
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
@@ -109,7 +108,7 @@ namespace prs_app_dotnet.Controllers
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-        // Post: api/users/login
+        // Post: api/users/login | LOGIN USER USING POST && JSON BODY
         // Unlike java, user must have null class attributes in json body.
         [HttpPost("{login}")]
         public async Task<ActionResult<User>> LoginUser(User user)
@@ -126,7 +125,7 @@ namespace prs_app_dotnet.Controllers
 
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/Users/5 | DELETE USER
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {

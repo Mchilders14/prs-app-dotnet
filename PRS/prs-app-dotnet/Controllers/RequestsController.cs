@@ -45,6 +45,20 @@ namespace prs_app_dotnet.Controllers
             return request;
         }
 
+        // GET: api/Requests/list-review/4 | Show requests in review status and not assigned to logged in user
+        [HttpGet("list-review/{id}")]
+        public async Task<ActionResult<IEnumerable<Request>>> GetRequestByReview(int id)
+        {
+            var request = await _context.Requests.Where(r => r.Status == "Review" && r.User.Id != id).ToListAsync();
+
+            if (request == null)
+            {
+                return NotFound();
+            }
+
+            return request;
+        }
+
         /*
          *  HTTP PUT -->
          */

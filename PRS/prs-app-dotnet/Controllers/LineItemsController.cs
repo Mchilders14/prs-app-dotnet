@@ -20,14 +20,28 @@ namespace prs_app_dotnet.Controllers
             _context = context;
         }
 
-        // GET: api/LineItems
+        // GET: api/LineItems | GET ALL
         [HttpGet]
         public async Task<ActionResult<IEnumerable<LineItem>>> GetLineItems()
         {
             return await _context.LineItems.ToListAsync();
         }
 
-        // GET: api/LineItems/5
+        // GET: api/LineItems/lines-for-pr/4 | GET BY REQUEST ID
+        [HttpGet("lines-for-pr/{id}")]
+        public async Task<ActionResult<IEnumerable<LineItem>>> GetByRequestId(int id)
+        {
+            var lineItem = await _context.LineItems.Where(li => li.RequestId == id).ToListAsync();
+
+            if (lineItem == null)
+            {
+                return null; ;
+            }
+
+            return lineItem;
+        }
+
+        // GET: api/LineItems/5 | GET BY ID
         [HttpGet("{id}")]
         public async Task<ActionResult<LineItem>> GetLineItem(int id)
         {
@@ -41,7 +55,7 @@ namespace prs_app_dotnet.Controllers
             return lineItem;
         }
 
-        // PUT: api/LineItems/5
+        // PUT: api/LineItems/5 | UPDATE && CALCULATE REQUEST TOTAL
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutLineItem(int id, LineItem lineItem)
@@ -73,7 +87,7 @@ namespace prs_app_dotnet.Controllers
             return NoContent();
         }
 
-        // POST: api/LineItems
+        // POST: api/LineItems | ADD LINEITEM && CALCULATE REQUEST TOTAL
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<LineItem>> PostLineItem(LineItem lineItem)
@@ -86,7 +100,7 @@ namespace prs_app_dotnet.Controllers
             return CreatedAtAction("GetLineItem", new { id = lineItem.Id }, lineItem);
         }
 
-        // DELETE: api/LineItems/5
+        // DELETE: api/LineItems/5 | DELETE LINEITEM
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLineItem(int id)
         {
