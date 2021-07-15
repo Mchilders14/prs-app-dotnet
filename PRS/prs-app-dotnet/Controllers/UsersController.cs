@@ -20,6 +20,10 @@ namespace prs_app_dotnet.Controllers
             _context = context;
         }
 
+        /*
+         *  HTTP GET -->
+         */
+
         // GET: api/Users/username/password | LOGIN USER
         [HttpGet("{username}/{password}")]
         public async Task<ActionResult<User>> LoginUser(string username, string password)
@@ -54,6 +58,10 @@ namespace prs_app_dotnet.Controllers
             return user;
         }
 
+        /*
+         *  HTTP PUT -->
+         */
+
         // PUT: api/Users/5 | UPDATE USER
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -85,7 +93,7 @@ namespace prs_app_dotnet.Controllers
             return NoContent();
         }
 
-        //Put: api/Users <- Id not required in searchbar | UPDATE USER WITHOUT ID IN HTML SEARCH
+        //Put: api/Users | UPDATE USER WITHOUT ID IN HTML SEARCH
         [HttpPut]
         public async Task<IActionResult> PutUser(User user)
         {
@@ -96,6 +104,10 @@ namespace prs_app_dotnet.Controllers
 
             return NoContent();
         }
+
+        /*
+         *  HTTP POST -->
+         */
 
         // POST: api/Users | ADD USER
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -124,6 +136,10 @@ namespace prs_app_dotnet.Controllers
             return login;
 
         }
+
+        /*
+         *  HTTP DELETE -->
+         */
 
         // DELETE: api/Users/5 | DELETE USER
         [HttpDelete("{id}")]

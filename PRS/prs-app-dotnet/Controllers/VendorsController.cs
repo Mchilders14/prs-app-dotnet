@@ -20,14 +20,18 @@ namespace prs_app_dotnet.Controllers
             _context = context;
         }
 
-        // GET: api/Vendors
+        /*
+         *  HTTP GET -->
+         */
+
+        // GET: api/Vendors | GET ALL VENDORS
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Vendor>>> GetVendors()
         {
             return await _context.Vendors.ToListAsync();
         }
 
-        // GET: api/Vendors/5
+        // GET: api/Vendors/5 | GET ALL VENDORS BY ID
         [HttpGet("{id}")]
         public async Task<ActionResult<Vendor>> GetVendor(int id)
         {
@@ -41,7 +45,23 @@ namespace prs_app_dotnet.Controllers
             return vendor;
         }
 
-        // PUT: api/Vendors/5
+        /*
+         *  HTTP PUT -->
+         */
+
+        //Put: api/Vendors | UPDATE VENDOR WITHOUT ID IN HTML SEARCH
+        [HttpPut]
+        public async Task<IActionResult> PutVendor(Vendor vendor)
+        {
+
+            _context.Entry(vendor).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // PUT: api/Vendors/5 | UPDATE VENDOR BY ID
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutVendor(int id, Vendor vendor)
@@ -72,7 +92,11 @@ namespace prs_app_dotnet.Controllers
             return NoContent();
         }
 
-        // POST: api/Vendors
+        /*
+         *  HTTP POST -->
+         */
+
+        // POST: api/Vendors | ADD VENDORS
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Vendor>> PostVendor(Vendor vendor)
@@ -83,7 +107,11 @@ namespace prs_app_dotnet.Controllers
             return CreatedAtAction("GetVendor", new { id = vendor.Id }, vendor);
         }
 
-        // DELETE: api/Vendors/5
+        /*
+         *  HTTP DELETE -->
+         */
+
+        // DELETE: api/Vendors/5 | DELETE VENDORS
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVendor(int id)
         {

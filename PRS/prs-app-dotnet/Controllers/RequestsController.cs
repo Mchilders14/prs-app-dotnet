@@ -24,14 +24,14 @@ namespace prs_app_dotnet.Controllers
          *  HTTP GET -->
          */
 
-        // GET: api/Requests
+        // GET: api/Requests | GET ALL REQUESTS
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Request>>> GetRequests()
         {
             return await _context.Requests.ToListAsync();
         }
 
-        // GET: api/Requests/5
+        // GET: api/Requests/5 | GET ALL REQUESTS BY ID
         [HttpGet("{id}")]
         public async Task<ActionResult<Request>> GetRequest(int id)
         {
@@ -95,7 +95,7 @@ namespace prs_app_dotnet.Controllers
 
         //Put: api/Requests <- ID NOT REQUIRED IN SEARCH BAR | UPDATE
         [HttpPut]
-        public async Task<IActionResult> PutUser(Request request)
+        public async Task<IActionResult> PutRequest(Request request)
         {
 
             _context.Entry(request).State = EntityState.Modified;
@@ -140,7 +140,7 @@ namespace prs_app_dotnet.Controllers
          *  HTTP POST -->
          */
 
-        // POST: api/Requests
+        // POST: api/Requests | ADD REQUEST
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Request>> PostRequest(Request request)
@@ -155,7 +155,7 @@ namespace prs_app_dotnet.Controllers
          *  HTTP DELETE -->
          */
 
-        // DELETE: api/Requests/5
+        // DELETE: api/Requests/5 | DELETE REQUEST
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRequest(int id)
         {

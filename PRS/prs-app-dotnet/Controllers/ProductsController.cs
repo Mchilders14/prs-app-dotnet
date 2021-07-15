@@ -20,14 +20,18 @@ namespace prs_app_dotnet.Controllers
             _context = context;
         }
 
-        // GET: api/Products
+        /*
+         *  HTTP GET -->
+         */
+
+        // GET: api/Products | GET ALL PRODUCTS
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
             return await _context.Products.ToListAsync();
         }
 
-        // GET: api/Products/5
+        // GET: api/Products/5 | GET PRODUCT BY ID
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
@@ -41,7 +45,23 @@ namespace prs_app_dotnet.Controllers
             return product;
         }
 
-        // PUT: api/Products/5
+        /*
+         *  HTTP PUT -->
+         */
+
+        //Put: api/Products | UPDATE PRODUCT WITHOUT ID IN HTML SEARCH
+        [HttpPut]
+        public async Task<IActionResult> PutProduct(Product product)
+        {
+
+            _context.Entry(product).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // PUT: api/Products/5 | UPDATE PRODUCT
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
@@ -72,7 +92,11 @@ namespace prs_app_dotnet.Controllers
             return NoContent();
         }
 
-        // POST: api/Products
+        /*
+         *  HTTP POST -->
+         */
+
+        // POST: api/Products | ADD PRODUCT
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
@@ -83,7 +107,11 @@ namespace prs_app_dotnet.Controllers
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
-        // DELETE: api/Products/5
+        /*
+         *  HTTP DELETE -->
+         */
+
+        // DELETE: api/Products/5 | DELETE PRODUCT
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {

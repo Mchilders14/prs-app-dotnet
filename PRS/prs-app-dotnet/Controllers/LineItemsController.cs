@@ -20,6 +20,10 @@ namespace prs_app_dotnet.Controllers
             _context = context;
         }
 
+        /*
+         *  HTTP GET -->
+         */
+
         // GET: api/LineItems | GET ALL
         [HttpGet]
         public async Task<ActionResult<IEnumerable<LineItem>>> GetLineItems()
@@ -55,6 +59,22 @@ namespace prs_app_dotnet.Controllers
             return lineItem;
         }
 
+        /*
+         *  HTTP PUT -->
+         */
+
+        //Put: api/LineItems | UPDATE LINEITEM WITHOUT ID IN HTML SEARCH
+        [HttpPut]
+        public async Task<IActionResult> PutLineItem(LineItem lineItem)
+        {
+
+            _context.Entry(lineItem).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
         // PUT: api/LineItems/5 | UPDATE && CALCULATE REQUEST TOTAL
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -87,6 +107,10 @@ namespace prs_app_dotnet.Controllers
             return NoContent();
         }
 
+        /*
+         *  HTTP POST -->
+         */
+
         // POST: api/LineItems | ADD LINEITEM && CALCULATE REQUEST TOTAL
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -99,6 +123,10 @@ namespace prs_app_dotnet.Controllers
 
             return CreatedAtAction("GetLineItem", new { id = lineItem.Id }, lineItem);
         }
+
+        /*
+         *  HTTP DELETE -->
+         */
 
         // DELETE: api/LineItems/5 | DELETE LINEITEM
         [HttpDelete("{id}")]
@@ -120,6 +148,10 @@ namespace prs_app_dotnet.Controllers
         {
             return _context.LineItems.Any(e => e.Id == id);
         }
+
+        /*
+         *  BONUS FUNCTIONS -->
+         */
 
         // Recalculation for the total in Class Requests
         public async Task RecalculateTotal(int requestId)
