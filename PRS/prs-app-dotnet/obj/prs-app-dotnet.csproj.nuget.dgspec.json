@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/prs-app-dotnet.csproj": {}
+    "/Users/matt/repos/prs-app-dotnet/PRS/prs-app-dotnet/prs-app-dotnet.csproj": {}
   },
   "projects": {
-    "/Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/prs-app-dotnet.csproj": {
+    "/Users/matt/repos/prs-app-dotnet/PRS/prs-app-dotnet/prs-app-dotnet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/prs-app-dotnet.csproj",
+        "projectUniqueName": "/Users/matt/repos/prs-app-dotnet/PRS/prs-app-dotnet/prs-app-dotnet.csproj",
         "projectName": "prs-app-dotnet",
-        "projectPath": "/Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/prs-app-dotnet.csproj",
+        "projectPath": "/Users/matt/repos/prs-app-dotnet/PRS/prs-app-dotnet/prs-app-dotnet.csproj",
         "packagesPath": "/Users/matt/.nuget/packages/",
-        "outputPath": "/Users/matt/prs-app-dotnet/PRS/prs-app-dotnet/obj/",
+        "outputPath": "/Users/matt/repos/prs-app-dotnet/PRS/prs-app-dotnet/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/matt/.config/NuGet/NuGet.Config"
+          "/Users/matt/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -47,17 +47,17 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.7, )"
+              "version": "[5.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[5.0.7, )"
+              "version": "[5.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.7, )"
+              "version": "[5.0.8, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
