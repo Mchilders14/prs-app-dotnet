@@ -1,17 +1,16 @@
-﻿<Properties StartupConfiguration="{FEEACE26-9028-4F06-922B-4894E66F546B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="prs-app-dotnet/Properties/launchSettings.json">
+﻿<Properties StartupConfiguration="{9B1CA9B9-DF66-4368-B62C-1CC2AF7CF156}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Startup.cs">
     <Files>
-      <File FileName="prs-app-dotnet/Controllers/LineItemsController.cs" Line="19" Column="10" />
-      <File FileName="prs-app-dotnet/appsettings.Development.json" Line="11" Column="248" />
-      <File FileName="prs-app-dotnet/Properties/launchSettings.json" Line="1" Column="1" />
+      <File FileName="appsettings.Development.json" Line="12" Column="4" />
+      <File FileName="Startup.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="PRS" expanded="True">
-            <Node name="prs-app-dotnet" expanded="True" selected="True">
-              <Node name="Properties" expanded="True" />
+          <Node name="prs-app-dotnet" expanded="True">
+            <Node name="prs-app-dotnet" expanded="True">
               <Node name="appsettings.json" expanded="True" />
+              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>

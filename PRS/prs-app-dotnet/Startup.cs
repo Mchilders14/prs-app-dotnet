@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 namespace prs_app_dotnet
 {
@@ -30,8 +31,13 @@ namespace prs_app_dotnet
                                                         
             services.AddControllers();
 
+            var builder = new SqlConnectionStringBuilder(
+            Configuration.GetConnectionString("AppDbContext"));
+            builder.Password = Configuration["DbPassword"];
+            var conn = builder.ConnectionString;
+
             services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("AppDbContext")));
+                    options.UseSqlServer(conn));
 
             services.AddCors(); // Adding AddCors() to allow any machine connection.
         }
